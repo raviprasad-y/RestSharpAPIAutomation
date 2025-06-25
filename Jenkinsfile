@@ -32,14 +32,19 @@ pipeline {
 
         stage('Generate Test Report') {
             steps {
-                bat 'dotnet tool install --global dotnet-reportgenerator-globaltool'
-                bat 'reportgenerator -reports:**/test_results.trx -targetdir:TestResults -reporttypes:Html'
+                bat 'dotnet new tool-manifest'
+                bat 'dotnet tool install dotnet-reportgenerator-globaltool'
+                bat 'dotnet tool run reportgenerator -reports:**/test_results.trx -targetdir:TestResults -reporttypes:Html'
             }
         }
 
         stage('Publish Report') {
             steps {
-                publishHTML([reportDir: 'TestResults', reportFiles: 'index.html', reportName: 'RestSharp API Test Report'])
+                publishHTML([
+                    reportDir: 'TestResults',
+                    reportFiles: 'index.html',
+                    reportName: 'RestSharp API Test Report'
+                ])
             }
         }
     }
