@@ -32,12 +32,11 @@ pipeline {
 
         stage('Generate Test Report') {
             steps {
-                bat 'dotnet new tool-manifest'
+                bat 'dotnet new tool-manifest --force'
                 bat 'dotnet tool install dotnet-reportgenerator-globaltool'
                 bat 'dotnet tool run reportgenerator -reports:**/test_results.trx -targetdir:TestResults -reporttypes:Html'
             }
         }
-
         stage('Publish Report') {
             steps {
                 publishHTML([
