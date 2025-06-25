@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace RestSharpAPIAutomation.Tests
 {
+    [TestFixture]
     public class DeletePlaceTest : APITestBase
     {
         [Test]

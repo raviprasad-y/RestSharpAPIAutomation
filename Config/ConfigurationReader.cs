@@ -27,5 +27,10 @@ namespace RestSharpAPIAutomation.Config
         {
             return config.GetSection(section)[key];
         }
+
+        public static int GetIntValue(string section, string key) { 
+            var value = config.GetSection(section)[key];
+            return int.TryParse(value, out int result) ? result : 0;
+        }
     }
 }

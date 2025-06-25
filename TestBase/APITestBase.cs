@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace RestSharpAPIAutomation.TestBase
 {
+    [TestFixture]
     [AllureNUnit]
     public class APITestBase
     {

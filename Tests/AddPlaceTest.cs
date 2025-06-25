@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace RestSharpAPIAutomation.Tests
 {
+    [TestFixture]
     public class AddPlaceTest : APITestBase
     {
         [Test]
